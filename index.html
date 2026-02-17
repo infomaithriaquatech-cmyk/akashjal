@@ -677,8 +677,6 @@ footer { background:var(--dark); padding:80px 64px 48px; }
 .phase1-visual {
     position: relative;
     height: 100%;
-    /* ADD THIS LINE - Adjust value as desired */
-    min-height: 800px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -687,10 +685,10 @@ footer { background:var(--dark); padding:80px 64px 48px; }
 .phase1-scene {
     position: relative;
     width: 100%;
-    /* UPDATE THIS LINE to match the min-height above */
-    height: 800px;
-    background: transparent;
-    box-shadow: none;
+    height: 600px; /* Define height to allow for vertical centering */
+    /* REMOVED GREEN BACKGROUND AND SHADOW */
+    background: transparent; 
+    box-shadow: none; 
     border-radius: 0;
 }
 
@@ -699,12 +697,11 @@ footer { background:var(--dark); padding:80px 64px 48px; }
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    /* CHANGE THIS from 60% to 100% */
-    width: 100%; 
-    /* INCREASE THIS to a large value (e.g., 600px) */
-    max-width: 600px; 
+    transform: translate(-50%, -50%); /* Perfect Center */
+    width: 60%;
+    max-width: 320px; /* Control max size of bottle */
     z-index: 2;
+    /* Gentle floating animation */
     animation: bottle-float 6s ease-in-out infinite;
 }
 
