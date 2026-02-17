@@ -561,92 +561,82 @@ footer { background:var(--dark); padding:80px 64px 48px; }
 /* ======================== */
 /* PHASE 1 SECTION STYLING */
 /* ======================== */
+/* ======================== */
+/* PHASE 1 SECTION STYLING */
+/* ======================== */
 
 #phase1 {
     background: #fff;
-    padding: 120px 0; /* Added top/bottom padding for better spacing */
+    padding: 120px 0;
 }
 
 .phase1-header {
     text-align: center;
-    margin-bottom: 80px; /* Increased spacing below header */
+    margin-bottom: 80px;
 }
 
-/* Grid Layout */
 .phase1-grid {
     display: grid;
-    /* Increased gap for a more open feel */
     grid-template-columns: 1.1fr 1fr;
-    gap: 100px; 
-    align-items: center;
+    gap: 80px; 
+    align-items: center; /* Vertically aligns content */
 }
 
-/* --- Intro Text --- */
+/* --- Content Styling --- */
 .phase1-intro {
-    font-size: 18px; /* Slightly larger */
+    font-size: 18px;
     line-height: 1.8;
     color: var(--body);
-    margin-bottom: 48px; /* More space before the list */
+    margin-bottom: 48px;
     font-weight: 300;
-    max-width: 540px;
+    max-width: 560px;
 }
 
-/* --- List Items --- */
 .phase1-items {
     display: flex;
     flex-direction: column;
     gap: 0;
-    border-top: 1px solid var(--border); /* Moved border to container */
+    border-top: 1px solid var(--border);
 }
 
 .phase1-item {
     display: flex;
-    gap: 24px; /* Increased gap between icon and text */
-    padding: 28px 0; /* More breathing room per item */
+    gap: 24px;
+    padding: 24px 0;
     border-bottom: 1px solid var(--border);
     align-items: flex-start;
     transition: all 0.3s ease;
-    border-radius: 12px; /* Subtle rounded corners on hover */
+    border-radius: 12px;
 }
 
-/* Removed individual top border as it's now on the container */
-.phase1-item:first-child { border-top: none; }
-
-/* Improved hover effect */
 .phase1-item:hover {
-    padding-left: 16px;
-    padding-right: 16px;
-    background: var(--teal-pale); /* Subtle background change */
-    border-color: transparent; /* Hide border on hover for a clean look */
+    padding-left: 12px;
+    padding-right: 12px;
+    background: var(--teal-mist); /* Subtle highlight on hover */
+    border-color: transparent;
 }
 
 .phase1-item-icon {
-    width: 52px; /* Slightly larger icon box */
-    height: 52px;
-    border-radius: 14px;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
     flex-shrink: 0;
-    background: #fff; /* White background for pop against pale hover */
+    background: #fff;
     border: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 22px;
     margin-top: 2px;
-    transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(26, 122, 122, 0.05);
-}
-
-.phase1-item:hover .phase1-item-icon {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(26, 122, 122, 0.1);
 }
 
 .phase1-item-text h4 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px; /* Larger title */
+    font-size: 22px;
     color: var(--dark);
     font-weight: 400;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .phase1-item-text p {
@@ -655,19 +645,16 @@ footer { background:var(--dark); padding:80px 64px 48px; }
     color: var(--body);
 }
 
-/* --- Placement Chips --- */
+/* Chips */
 .phase1-placements {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 48px;
+    gap: 10px;
+    margin-top: 40px;
 }
 
 .place-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px; /* More padding */
+    padding: 8px 18px;
     border-radius: 50px;
     background: var(--teal-pale);
     border: 1px solid rgba(34, 165, 165, 0.15);
@@ -682,45 +669,56 @@ footer { background:var(--dark); padding:80px 64px 48px; }
 
 .place-chip:hover {
     background: var(--teal-mist);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(26, 122, 122, 0.1);
-    border-color: var(--teal-light);
 }
 
-/* --- Visual Section --- */
-.phase1-visual { position: relative; }
+/* --- Visual Section (Centered on White) --- */
+.phase1-visual {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .phase1-scene {
-    border-radius: 32px; /* More rounded */
-    overflow: hidden;
-    height: 600px; /* Taller scene */
     position: relative;
-    /* Subtle gradient adjustment */
-    background: linear-gradient(160deg, #E0F5F5 0%, #A8DDE0 50%, #6DC8D5 100%);
-    box-shadow: 0 20px 40px rgba(26, 122, 122, 0.1);
+    width: 100%;
+    height: 600px; /* Define height to allow for vertical centering */
+    /* REMOVED GREEN BACKGROUND AND SHADOW */
+    background: transparent; 
+    box-shadow: none; 
+    border-radius: 0;
 }
 
-.phase1-bottle-float {
+/* Centering the Bottle */
+.phase1-bottle-center {
     position: absolute;
-    bottom: -20px; /* Adjusted position */
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    /* Ensure the container has a size for the image */
-    width: 80%; 
-    max-width: 380px;
-    animation: bottle-float 5s ease-in-out infinite;
+    transform: translate(-50%, -50%); /* Perfect Center */
+    width: 60%;
+    max-width: 320px; /* Control max size of bottle */
     z-index: 2;
+    /* Gentle floating animation */
+    animation: bottle-float 6s ease-in-out infinite;
 }
 
-/* Added class for the image itself */
 .phase1-bottle-img {
     width: 100%;
     height: auto;
     display: block;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+    /* Add drop shadow to make bottle pop against white */
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
 }
 
-/* Floating Tags */
+@keyframes bottle-float {
+    0%, 100% { transform: translate(-50%, -50%); }
+    50% { transform: translate(-50%, -58%); } /* Moves up slightly */
+}
+
+/* Floating Tags - Updated for White Background */
 .phase1-tags {
     position: absolute;
     inset: 0;
@@ -730,43 +728,33 @@ footer { background:var(--dark); padding:80px 64px 48px; }
 
 .phase1-tag {
     position: absolute;
-    background: rgba(255, 255, 255, 0.92);
+    /* Added border and changed background for visibility */
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 8px 16px;
     border-radius: 50px;
-    padding: 8px 16px; /* Slightly smaller padding */
-    font-size: 10px; /* Smaller font */
+    font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--teal-deep);
     font-weight: 600;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 8px 20px rgba(26, 122, 122, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    animation: elem-float var(--d, 5s) var(--dl, 0s) infinite ease-in-out;
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    animation: elem-float var(--d, 5s) ease-in-out infinite;
 }
 
-/* Subtle tilt on hover for tags */
-.phase1-visual:hover .phase1-tag {
-    transform: rotate(-2deg) scale(1.05);
-}
-.phase1-visual:hover .phase1-tag:nth-child(even) {
-    transform: rotate(2deg) scale(1.05);
-}
-
-
-/* --- Responsive Design --- */
+/* Responsive */
 @media (max-width: 960px) {
-    #phase1 { padding: 80px 0; }
     .phase1-grid {
         grid-template-columns: 1fr;
         gap: 60px;
     }
-    .phase1-intro { margin-bottom: 40px; }
-    .phase1-scene { height: 480px; }
-    .phase1-bottle-float { max-width: 300px; bottom: -10px; }
-    .phase1-item:hover { padding-left: 0; padding-right: 0; background: transparent; }
+    .phase1-scene {
+        height: 400px;
+    }
+    .phase1-bottle-center {
+        max-width: 200px;
+    }
 }
-
 /* HAMBURGER MOBILE NAV */
 .hamburger {
   display:none; flex-direction:column; gap:5px; cursor:pointer;
@@ -1081,9 +1069,11 @@ nav.scrolled .hamburger span { background:var(--ink); }
       <span class="section-label reveal">Where We Begin</span>
       <h2 class="section-h2 reveal reveal-delay-1">Phase 1 — <em>Premium Atmospheric Water</em></h2>
     </div>
+    
     <div class="phase1-grid">
       <div class="phase1-content">
         <p class="phase1-intro reveal">We launch with our flagship — pure alkaline atmospheric water in glass-forward packaging. Our controlled urban debut begins in Hyderabad, India's fastest-growing metro, before expanding to premium markets nationally and globally.</p>
+        
         <div class="phase1-items">
           <div class="phase1-item reveal">
             <div class="phase1-item-icon">💧</div>
@@ -1114,6 +1104,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
             </div>
           </div>
         </div>
+        
         <div class="phase1-placements reveal">
           <span class="place-chip">🏨 Boutique Hotels</span>
           <span class="place-chip">🍽️ Fine Dining</span>
@@ -1127,13 +1118,14 @@ nav.scrolled .hamburger span { background:var(--ink); }
       <div class="phase1-visual reveal reveal-delay-2">
         <div class="phase1-scene">
           <div class="phase1-tags">
-            <div class="phase1-tag" style="top:14%;left:6%;--d:5s;--dl:0s;">🌊 Sky-Sourced</div>
-            <div class="phase1-tag" style="top:20%;right:8%;--d:6s;--dl:1s;">✨ pH 8.5+</div>
-            <div class="phase1-tag" style="bottom:22%;left:5%;--d:7s;--dl:0.5s;">🍃 Botanical</div>
-            <div class="phase1-tag" style="bottom:15%;right:6%;--d:5.5s;--dl:1.5s;">🫙 Glass First</div>
+            <div class="phase1-tag" style="top:10%; left:0%; --d:5s;">🌊 Sky-Sourced</div>
+            <div class="phase1-tag" style="top:15%; right:5%; --d:6s;">✨ pH 8.5+</div>
+            <div class="phase1-tag" style="bottom:15%; left:5%; --d:7s;">🍃 Botanical</div>
+            <div class="phase1-tag" style="bottom:10%; right:0%; --d:5.5s;">🫙 Glass First</div>
           </div>
-          <div class="phase1-bottle-float">
-              <img src="phase.png" alt="AkashJal Bottle Phase 1" class="phase1-bottle-img">
+          
+          <div class="phase1-bottle-center">
+             <img src="phase.png" alt="AkashJal Bottle Phase 1" class="phase1-bottle-img">
           </div>
         </div>
       </div>
