@@ -356,12 +356,14 @@ section { padding:120px 64px; }
 .tab-btn.active, .tab-btn:hover { background:var(--teal-deep); color:#fff; border-color:var(--teal-deep); }
 
 /* Slider track */
-.slider-wrapper { overflow:hidden; position:relative; }
-.slider-track { display:flex; transition:transform 0.7s cubic-bezier(0.4,0,0.2,1); will-change:transform; }
-.slide { min-width:100%; }
-.slide-inner { display:grid; grid-template-columns:1fr 1fr; min-height:520px; max-width:1400px; margin:0 auto; padding:0 64px; gap:60px; align-items:center; }
+.slider-wrapper { overflow:hidden; position:relative; width:100%; }
+.slider-track { display:flex; transition:transform 0.7s cubic-bezier(0.4,0,0.2,1); will-change:transform; width:500%; }
+.slide { flex:0 0 20%; width:20%; min-width:0; }
+.slide-inner { display:grid; grid-template-columns:1fr 1fr; min-height:520px; max-width:1400px; margin:0 auto; padding:0 64px; gap:60px; align-items:center; box-sizing:border-box; }
 .slide-visual { border-radius:24px; overflow:hidden; height:460px; position:relative; }
-.sv-1 { background:linear-gradient(160deg,#C8EEED 0%,#85D5D5 55%,#3DBFBF 100%); }
+.sv-1 { background:#F0FAFA; }
+@keyframes bottle-hover { 0%,100%{transform:scale(1) translateY(0);} 50%{transform:scale(1.04) translateY(-10px);} }
+.sv-1 .slide-bottle-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; animation:bottle-hover 5s ease-in-out infinite; border-radius:24px; }
 .sv-2 { background:linear-gradient(160deg,#B8E0F5 0%,#6BBFE8 55%,#2E9FD0 100%); }
 .sv-3 { background:linear-gradient(160deg,#C0E8D0 0%,#70C898 55%,#2EA870 100%); }
 .sv-4 { background:linear-gradient(160deg,#E8D8C0 0%,#D4A84B 55%,#B8872A 100%); }
@@ -1157,9 +1159,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
               <div class="slide-prop" style="bottom:80px;right:20px;--d:6s;--dl:1s;">✨ Zero Impurity</div>
             </div>
             <!-- Large drop illustration -->
-            <div style="position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:center;">
-              <img src="alkaline.png" alt="Alkaline Water" style="height:360px;width:200px;object-fit:contain;" />
-            </div>
+            <img class="slide-bottle-img" src="alkaline.png" alt="Alkaline Water" />
             <div class="sl-badge"><span class="sl-badge-num">8.5+</span><div class="sl-badge-lbl">pH Level</div></div>
           </div>
           <div class="slide-content">
@@ -1588,12 +1588,11 @@ nav.scrolled .hamburger span { background:var(--ink); }
     // --- 5. Slider Implementation ---
     (function initSlider() {
       let currentSlide = 0;
-      const totalSlides = 5; // Ensure this matches your actual number of slides
+      const totalSlides = 5;
       const track = document.getElementById('sliderTrack');
       const dotsContainer = document.getElementById('sliderDots');
       const tabs = document.querySelectorAll('.tab-btn');
 
-      // Exit if essential slider elements are missing
       if (!track || !dotsContainer) return;
 
       // Create dots dynamically
@@ -1607,13 +1606,12 @@ nav.scrolled .hamburger span { background:var(--ink); }
 
       function goToSlide(n) {
         currentSlide = Math.max(0, Math.min(n, totalSlides - 1));
-        track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
-        // Update active states for dots and tabs
+        // Track is 500% wide, each slide = 20% of track = 100% of wrapper
+        track.style.transform = 'translateX(-' + (currentSlide * 20) + '%)';
         document.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
         tabs.forEach((t, i) => t.classList.toggle('active', i === currentSlide));
       }
 
-      // Expose necessary functions globally if needed for HTML onclick events
       window.goToSlide = goToSlide;
       window.nextSlide = function() {
         goToSlide(currentSlide < totalSlides - 1 ? currentSlide + 1 : 0);
@@ -1622,31 +1620,26 @@ nav.scrolled .hamburger span { background:var(--ink); }
         goToSlide(currentSlide > 0 ? currentSlide - 1 : totalSlides - 1);
       };
 
-      // Auto-advance functionality
       let autoSlide = setInterval(window.nextSlide, 5000);
       const wrapper = document.querySelector('.slider-wrapper');
       if (wrapper) {
-        // Pause on hover
         wrapper.addEventListener('mouseenter', () => clearInterval(autoSlide));
         wrapper.addEventListener('mouseleave', () => {
           autoSlide = setInterval(window.nextSlide, 5000);
         });
       }
 
-      // Touch swipe functionality
       let touchStartX = 0;
       track.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX, { passive: true });
       track.addEventListener('touchend', e => {
         const dx = touchStartX - e.changedTouches[0].clientX;
-        // Threshold of 50px for a swipe to register
         if (Math.abs(dx) > 50) {
           dx > 0 ? window.nextSlide() : window.prevSlide();
         }
       });
 
-      // Initialize first slide
       goToSlide(0);
-    })(); // End Slider IIFE
+    })();
 
     // --- Phase Video Slider ---
     (function() {
