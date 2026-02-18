@@ -705,6 +705,125 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .bottle-wrap img {
   animation: bottle-float 5s ease-in-out infinite;
 }
+
+/* PHASE VIDEO SLIDER */
+.phase-vslider {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  height: 540px;
+  box-shadow: 0 24px 60px rgba(26,122,122,0.18);
+}
+.phase-vtrack {
+  display: flex;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.77,0,0.175,1);
+  will-change: transform;
+}
+.phase-vslide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.phase-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.phase-voverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10,30,40,0.08) 0%, transparent 40%, rgba(10,30,40,0.35) 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  pointer-events: none;
+}
+.phase-vtag {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 7px 16px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(34,165,165,0.2);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+  font-weight: 400;
+  box-shadow: 0 4px 16px rgba(26,122,122,0.1);
+}
+.phase-vtag:nth-child(2) { align-self: flex-end; margin-top: 4px; }
+.phase-vcaption {
+  position: absolute;
+  bottom: 72px;
+  left: 24px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.phase-vnum {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.25);
+  line-height: 1;
+}
+.phase-vlabel {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  font-weight: 400;
+}
+.phase-vcontrols {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 18px 24px;
+  background: rgba(13,31,45,0.55);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.phase-varrow {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.phase-varrow:hover {
+  background: var(--teal);
+  border-color: var(--teal);
+  transform: scale(1.08);
+}
+.phase-vdots { display: flex; gap: 8px; align-items: center; }
+.phase-vdot {
+  width: 28px; height: 2px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.phase-vdot.active {
+  background: var(--teal-light);
+  width: 48px;
+}
+@media(max-width:960px) {
+  .phase-vslider { height: 360px; }
+}
 </style>
 </head>
 <body>
@@ -955,24 +1074,47 @@ nav.scrolled .hamburger span { background:var(--ink); }
         </div>
       </div>
       <div class="phase1-visual reveal">
-        <div class="phase1-scene">
-          <div class="phase1-tags">
-            <div class="phase1-tag" style="top:14%;left:6%;--d:5s;--dl:0s;">🌊 Sky-Sourced</div>
-            <div class="phase1-tag" style="top:20%;right:8%;--d:6s;--dl:1s;">✨ pH 8.5+</div>
-            <div class="phase1-tag" style="bottom:22%;left:5%;--d:7s;--dl:0.5s;">🍃 Botanical</div>
-            <div class="phase1-tag" style="bottom:15%;right:6%;--d:5.5s;--dl:1.5s;">🫙 Glass First</div>
+        <!-- Video Slider -->
+        <div class="phase-vslider">
+          <div class="phase-vtrack" id="phaseVTrack">
+            <!-- Slide 1 -->
+            <div class="phase-vslide">
+              <video src="phase.mp4" autoplay loop muted playsinline class="phase-video"></video>
+              <div class="phase-voverlay">
+                <div class="phase-vtag">🌊 Sky-Sourced</div>
+                <div class="phase-vtag">✨ pH 8.5+</div>
+              </div>
+              <div class="phase-vcaption">
+                <span class="phase-vnum">01</span>
+                <span class="phase-vlabel">Signature Alkaline Water</span>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="phase-vslide">
+              <video src="phasei.mp4" autoplay loop muted playsinline class="phase-video"></video>
+              <div class="phase-voverlay">
+                <div class="phase-vtag">🍃 Botanical</div>
+                <div class="phase-vtag">🫙 Glass First</div>
+              </div>
+              <div class="phase-vcaption">
+                <span class="phase-vnum">02</span>
+                <span class="phase-vlabel">Infused Wellness Series</span>
+              </div>
+            </div>
           </div>
-          <div class="phase1-bottle-float">
-            <video
-              src="phase.mp4"
-              autoplay
-              loop
-              muted
-              playsinline
-              style="height:440px;width:auto;object-fit:contain;display:block;filter:drop-shadow(0 20px 48px rgba(26,122,122,0.22));"
-            ></video>
+          <!-- Controls -->
+          <div class="phase-vcontrols">
+            <button class="phase-varrow phase-vprev" onclick="phaseSlide(-1)" aria-label="Previous">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg>
+            </button>
+            <div class="phase-vdots">
+              <div class="phase-vdot active" onclick="phaseGoTo(0)"></div>
+              <div class="phase-vdot" onclick="phaseGoTo(1)"></div>
+            </div>
+            <button class="phase-varrow phase-vnext" onclick="phaseSlide(1)" aria-label="Next">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,18 15,12 9,6"/></svg>
+            </button>
           </div>
-
         </div>
       </div>
     </div>
@@ -1359,7 +1501,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
       <div class="contact-card reveal reveal-delay-1">
         <div class="contact-icon">📞</div>
         <h3>Contact</h3>
-        <p><a href="tel:+919908011939">+91 99080 11939</a><br><a href="/cdn-cgi/l/email-protection#8ae3e4ece5caebe1ebf9e2e0ebe6a4e9e5e7"><span class="__cf_email__" data-cfemail="553c3b333a15343e34263d3f34397b363a38">[email&#160;protected]</span></a><br><a href="http://akashjal.com">akashjal.com</a></p>
+        <p><a href="tel:+919908011939">+91 99080 11939</a><br><a href="mailto:info@akashjal.com">info@akashjal.com</a><br><a href="http://akashjal.com">akashjal.com</a></p>
       </div>
       <div class="contact-card reveal reveal-delay-2">
         <div class="contact-icon">🕘</div>
@@ -1396,16 +1538,16 @@ nav.scrolled .hamburger span { background:var(--ink); }
       <ul>
         <li><a href="#leadership">Leadership</a></li>
         <li><a href="#contact">Contact Us</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#7e171018113e1f151f0d16141f12501d1113">Partner With Us</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#1f767179705f7e747e6c77757e73317c7072">Distributor Enquiry</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#dab3b4bcb59abbb1bba9b2b0bbb6f4b9b5b7">Hospitality Sales</a></li>
+        <li><a href="mailto:info@akashjal.com">Partner With Us</a></li>
+        <li><a href="mailto:info@akashjal.com">Distributor Enquiry</a></li>
+        <li><a href="mailto:info@akashjal.com">Hospitality Sales</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Get In Touch</h4>
       <address>
         <a href="tel:+919908011939">+91 99080 11939</a>
-        <a href="/cdn-cgi/l/email-protection#92fbfcf4fdd2f3f9f3e1faf8f3febcf1fdff"><span class="__cf_email__" data-cfemail="2c45424a436c4d474d5f44464d40024f4341">[email&#160;protected]</span></a>
+        <a href="mailto:info@akashjal.com">info@akashjal.com</a>
         <a href="http://akashjal.com">akashjal.com</a>
         <span style="color:rgba(255,255,255,0.55);font-size:13px;margin-top:8px;display:block;">Plot No. 134, I.D.A., Phase III<br>Cherlapally, TSIIC-IALA<br>Hyderabad – 500051</span>
       </address>
@@ -1420,7 +1562,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
     </div>
   </div>
 </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
 
 <script>
   // =========================================
@@ -1578,6 +1720,26 @@ nav.scrolled .hamburger span { background:var(--ink); }
       // Initialize first slide
       goToSlide(0);
     })(); // End Slider IIFE
+
+    // --- Phase Video Slider ---
+    (function() {
+      let cur = 0;
+      const total = 2;
+      const track = document.getElementById('phaseVTrack');
+      if (!track) return;
+      function phaseGoTo(n) {
+        cur = (n + total) % total;
+        track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+        document.querySelectorAll('.phase-vdot').forEach((d, i) => d.classList.toggle('active', i === cur));
+        // Play active video, pause inactive
+        const vids = track.querySelectorAll('video');
+        vids.forEach((v, i) => { i === cur ? v.play() : v.pause(); });
+      }
+      window.phaseSlide = function(dir) { phaseGoTo(cur + dir); };
+      window.phaseGoTo = phaseGoTo;
+      // Auto advance
+      setInterval(() => phaseGoTo(cur + 1), 6000);
+    })();
 
   }); // End DOMContentLoaded
 </script>
