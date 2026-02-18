@@ -1849,200 +1849,322 @@ nav.scrolled .hamburger span { background:var(--ink); }
   }); // end DOMContentLoaded
 
   // =========================================
-  // AkashJal Company Chat Bot
+  // AkashJal Smart Chatbot with EmailJS
   // =========================================
-  (function() {
-    // Bot conversation flow — collects visitor details
-    const STEPS = [
-      {
-        key: null,
-        ask: "Namaste! 🙏 Welcome to <strong>AkashJal</strong> — India's first premium atmospheric water brand.<br><br>I'm Priya, your AkashJal guide. I'd love to learn more about you. What's your <strong>full name</strong>?",
-        placeholder: "Your full name…",
-        chips: []
-      },
-      {
-        key: 'name',
-        ask: (d) => `Lovely to meet you, <strong>${d.name}</strong>! 💧<br><br>What's your <strong>email address</strong>? We'll use it only to share updates and your inquiry response.`,
-        placeholder: "Your email address…",
-        chips: []
-      },
-      {
-        key: 'email',
-        ask: () => `Thank you! Could you also share your <strong>phone number</strong>? (Optional — you can type "skip" to continue)`,
-        placeholder: "Phone number or 'skip'…",
-        chips: ['Skip']
-      },
-      {
-        key: 'phone',
-        ask: (d) => `Perfect! What brings you to AkashJal today? How can we help you, <strong>${d.name}</strong>?`,
-        placeholder: "Select or type your interest…",
-        chips: ['Product Enquiry', 'Wholesale / Bulk', 'Hotel & F&B Partnership', 'Distributor Tie-up', 'Temple / Event Supply', 'Just Exploring']
-      },
-      {
-        key: 'interest',
-        ask: (d) => `Great choice! Tell us a little more about your <strong>${d.interest}</strong> requirements or any specific questions you have.`,
-        placeholder: "Your message…",
-        chips: []
-      },
-      {
-        key: 'message',
-        ask: (d) => `Thank you, <strong>${d.name}</strong>! 🌿<br><br>We've received your details and our team will reach out to you at <strong>${d.email}</strong> within <strong>24 hours</strong>.<br><br>For urgent queries: <a href="tel:+919908011939" style="color:var(--teal-deep);font-weight:500;">+91 99080 11939</a>`,
-        placeholder: null,
-        chips: []
-      }
-    ];
+  // SETUP: Sign up free at https://www.emailjs.com
+  // 1. Add an Email Service (Gmail/Outlook) → copy Service ID
+  // 2. Create a Template using the variables below → copy Template ID
+  // 3. Go to Account → copy your Public Key
+  // Replace the three placeholders below with your actual values:
+  const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // e.g. 'service_abc123'
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // e.g. 'template_xyz789'
+  const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // e.g. 'user_AbCdEfGhIj'
+  const TO_EMAIL = 'info@akashjal.com';
 
-    let step = 0;
+  // ── KNOWLEDGE BASE ────────────────────────────────────────────────
+  const KB = [
+    // Products
+    { keys: ['alkaline','alkaline water','flagship','ph','ph level','8.5','500ml','1l','1 litre'],
+      answer: `Our <strong>Premium Alkaline Water</strong> 💧 is AkashJal's flagship product — pH 8.5+ atmospheric water harvested from the sky. Available in 500ml &amp; 1L in premium glass and eco-PET. Zero ground contaminants, zero additives. Pure hydration as nature intended.` },
+    { keys: ['botanical','infused','tulsi','ashwagandha','brahmi','shatavari','moringa','herbal','herbs'],
+      answer: `Our <strong>Botanical Infused Water</strong> 🌿 range features 5 signature Indian botanical variants — Tulsi, Ashwagandha, Brahmi, Shatavari &amp; Moringa — blended into our atmospheric water base. No artificial flavours. Coming 2025.` },
+    { keys: ['wellness','electrolyte','sports','performance','functional','hydration blend','blend'],
+      answer: `Our <strong>Wellness Hydration Blends</strong> ⚡ are science-led, electrolyte-enhanced atmospheric water formulas designed for athletes, yoga practitioners &amp; health-conscious consumers. Ideal for sports &amp; active wellness — no sugar, no artificial minerals.` },
+    { keys: ['glass','glass collection','bottle','packaging','recyclable','luxury packaging','sustainable'],
+      answer: `Our <strong>Premium Glass Collection</strong> 🍾 is sustainability as luxury. Hand-finished glass bottles — 100% recyclable, zero plastic compromise. Perfect for gifting, fine dining tables, boutique hotels &amp; events. Custom engravings available on order.` },
+    { keys: ['limited','edition','collaboration','collector','seasonal','ceremonial','chef','special'],
+      answer: `Our <strong>Limited Edition Collaborations</strong> ⭐ are exclusive seasonal releases co-created with India's finest chefs, wellness practitioners, temples &amp; cultural institutions. Collector-grade packaging. Released in limited quantities — each edition tells a unique story.` },
+    { keys: ['products','range','what do you sell','all products','offerings','collection'],
+      answer: `AkashJal offers <strong>5 product ranges</strong>:<br>💧 <strong>Alkaline Water</strong> — pH 8.5+, 500ml &amp; 1L<br>🌿 <strong>Botanical Infusions</strong> — 5 Indian herb variants<br>⚡ <strong>Wellness Blends</strong> — Electrolyte-enhanced<br>🍾 <strong>Glass Collection</strong> — Luxury recyclable glass<br>⭐ <strong>Limited Editions</strong> — Seasonal collaborations<br><br>Which would you like to know more about?` },
+
+    // Company info
+    { keys: ['what is akashjal','about akashjal','akashjal','who are you','company','brand','about'],
+      answer: `<strong>AkashJal</strong> — <em>Prana AkashJal Pvt. Ltd.</em> — is <strong>India's first premium atmospheric water brand</strong>, born in Hyderabad in 2024. 🌏<br><br>We harvest water from atmospheric moisture — the sky itself — using advanced air-to-water technology. Rooted in Indian elemental philosophy (<em>Pancha Mahabhuta</em>), presented with global luxury aesthetics.` },
+    { keys: ['atmospheric','how is water made','air to water','how','sourced','source','sky','harvest','technology'],
+      answer: `AkashJal uses <strong>advanced atmospheric water generation technology</strong> ☁️ — extracting pure moisture directly from the air. This means:<br>✅ Zero ground extraction<br>✅ Zero industrial contaminants<br>✅ Naturally pure before any treatment<br><br>It's water literally born from the sky — a modern expression of ancient respect for natural cycles.` },
+    { keys: ['philosophy','pancha','mahabhuta','jal','akash','prithvi','vayu','agni','elements','indian'],
+      answer: `AkashJal is rooted in <strong>Pancha Mahabhuta</strong> — the five Indian elements 🕉️:<br>🌍 <em>Prithvi</em> (Earth) · 💧 <em>Jal</em> (Water) · 🔥 <em>Agni</em> (Fire) · 💨 <em>Vayu</em> (Air) · ✨ <em>Akash</em> (Sky/Space)<br><br>"Akash" represents infinite possibility. We believe consumption should be mindful, luxury non-extractive, and growth in harmony with nature.` },
+    { keys: ['mission','why','purpose','why exist'],
+      answer: `Our <strong>Mission</strong> 🌿: To create premium atmospheric water &amp; beverage experiences combining <em>regenerative sourcing</em>, <em>thoughtful design</em>, <em>cultural depth</em>, <em>F&amp;B innovation</em>, and <em>global aesthetic sensibility</em>.<br><br>Growing steadily, responsibly, and with clarity of identity.` },
+    { keys: ['vision','stages','stage','phase','roadmap','future','expand','growth'],
+      answer: `AkashJal's <strong>3-Stage Vision</strong>:<br><br>🔹 <strong>Stage I</strong> — Premium atmospheric water, launched from Hyderabad. Glass packaging as signature.<br>🔹 <strong>Stage II</strong> — Expand to botanicals, wellness blends &amp; pan-India hospitality rollout.<br>🔹 <strong>Stage III</strong> — Global wellness platform: curated experiences &amp; lifestyle ecosystem.` },
+
+    // Leadership
+    { keys: ['ceo','director','bhagawan','dr','leadership','founder','who runs','management','team'],
+      answer: `<strong>Our Leadership</strong>:<br><br>👤 <strong>Dr. C.N. Bhagawan</strong> — Director &amp; CEO. PhD from CSIR-IICT. 30+ years in biotech, nutraceuticals &amp; functional beverages. Former Aurobindo Pharma &amp; Camlin Fine Sciences.<br><br>👤 <strong>Nagaraj Vedula</strong> — Director &amp; Marketing Head. MBA from IIM Kozhikode. 29+ years in FMCG. Launched Sprite, Aashirvaad &amp; Sunfeast.` },
+    { keys: ['nagaraj','vedula','marketing'],
+      answer: `<strong>Nagaraj Vedula</strong> — Director &amp; Marketing Head 🎯. MBA from IIM Kozhikode with 29+ years across Telecom &amp; FMCG. Pivotal in launching marquee brands including Sprite, Aashirvaad &amp; Sunfeast. Full P&amp;L ownership managing 100+ channel partners across India.` },
+
+    // Contact & Location
+    { keys: ['contact','phone','call','number','reach','get in touch','email','mail'],
+      answer: `<strong>Contact AkashJal</strong> 📞<br><br>📱 <strong>Phone:</strong> +91 99080 11939<br>📧 <strong>Email:</strong> info@akashjal.com<br>🌐 <strong>Web:</strong> akashjal.com<br>🕘 <strong>Hours:</strong> Mon–Sat, 9 AM – 5 PM IST` },
+    { keys: ['address','location','factory','where','hyderabad','cherlapally'],
+      answer: `<strong>AkashJal Factory Address</strong> 📍<br><br>Plot No. 134, I.D.A., Phase III<br>Cherlapally, TSIIC-IALA<br>Hyderabad – 500051<br>Telangana, India` },
+
+    // Pricing & Availability
+    { keys: ['price','cost','how much','rate','pricing','affordable','expensive'],
+      answer: `For <strong>pricing &amp; bulk rates</strong>, please share your details and our team will send you a personalised quote within 24 hours. 💬<br><br>We offer special pricing for:<br>🏨 Hotels &amp; hospitality<br>🍽️ Restaurants &amp; fine dining<br>📦 Wholesale &amp; distributors<br>🕌 Temples &amp; events<br><br>Would you like to submit an enquiry?` },
+    { keys: ['buy','order','purchase','available','where to buy','stock','retail'],
+      answer: `AkashJal is available at premium placement channels 🛒:<br><br>🏨 Boutique Hotels<br>🍽️ Fine Dining Restaurants<br>🧘 Wellness Cafés<br>🎭 Cultural Events<br>🕌 Temple Offerings<br>✈️ Premium Retail outlets<br><br>For orders &amp; distribution queries, please leave your details — our team will connect with you!` },
+    { keys: ['wholesale','bulk','distributor','distribution','partner','partnership','hotel','hospitality','b2b'],
+      answer: `We welcome <strong>B2B &amp; distribution partnerships</strong>! 🤝<br><br>We work with:<br>🏨 Boutique &amp; luxury hotels<br>🍽️ Fine dining &amp; restaurants<br>🧘 Wellness centres &amp; spas<br>🕌 Temples &amp; cultural institutions<br>📦 Wholesale distributors<br><br>Please share your name and contact details so our partnerships team can reach out!` },
+
+    // Fallback / small talk
+    { keys: ['hello','hi','hey','namaste','good morning','good afternoon','good evening','hii','helo'],
+      answer: `Namaste! 🙏 Welcome to <strong>AkashJal</strong> — India's first premium atmospheric water brand.<br><br>I can help you with product information, pricing, partnerships, or general enquiries. What would you like to know? Or type <em>"enquire"</em> to submit your contact details to our team.` },
+    { keys: ['thank','thanks','thankyou','thank you','great','awesome','perfect','wonderful'],
+      answer: `You're most welcome! 💧 We're glad we could help. Is there anything else you'd like to know about AkashJal? You can also type <em>"enquire"</em> anytime to connect with our team directly.` },
+    { keys: ['enquire','enquiry','connect','submit','contact form','leave details','send details','talk to team','speak'],
+      answer: `TRIGGER_LEAD_FLOW` },
+  ];
+
+  // ── LEAD COLLECTION STEPS ─────────────────────────────────────────
+  const LEAD_STEPS = [
+    { key: 'name',     ask: `Could I get your <strong>full name</strong> please? 😊`,                                                         placeholder: 'Your full name…',          chips: [] },
+    { key: 'email',    ask: (d) => `Thank you <strong>${d.name}</strong>! What's your <strong>email address</strong>?`,                       placeholder: 'Your email address…',       chips: [] },
+    { key: 'phone',    ask: () => `And your <strong>phone number</strong>? (type <em>skip</em> to continue)`,                                 placeholder: "Phone or 'skip'…",          chips: ['Skip'] },
+    { key: 'interest', ask: (d) => `Great! What's your <strong>primary interest</strong>, ${d.name}?`,                                        placeholder: 'Select or type…',           chips: ['Product Enquiry','Wholesale / Bulk','Hotel & F&B','Distributor','Temple / Event','Pricing Quote','Just Exploring'] },
+    { key: 'message',  ask: (d) => `Almost done! Any <strong>specific requirements</strong> or questions about your <em>${d.interest}</em>?`, placeholder: 'Your message or requirements…', chips: [] },
+  ];
+
+  (function () {
+    let mode = 'faq';      // 'faq' | 'lead'
+    let leadStep = 0;
     let data = {};
     let chatOpen = false;
+    let initialized = false;
 
-    function now() {
-      return new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+    // Load EmailJS SDK
+    const ejsScript = document.createElement('script');
+    ejsScript.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+    ejsScript.onload = () => { if (window.emailjs) emailjs.init(EMAILJS_PUBLIC_KEY); };
+    document.head.appendChild(ejsScript);
+
+    function nowTime() {
+      return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
 
-    function getBotMsg(index) {
-      const s = STEPS[index];
-      return typeof s.ask === 'function' ? s.ask(data) : s.ask;
-    }
-
-    function renderBotMsg(text, scroll=true) {
+    function renderBotMsg(html, delay = 950) {
       const msgs = document.getElementById('chatMessages');
-      // Typing indicator
       const typing = document.createElement('div');
       typing.className = 'msg bot';
-      typing.id = 'typingIndicator';
-      typing.innerHTML = `<div class="bot-avatar">💧</div><div class="msg-bubble" style="padding:12px 16px;"><div class="typing-bubble"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>`;
+      typing.innerHTML = `<div class="bot-avatar">💧</div><div class="msg-bubble" style="padding:10px 14px;"><div class="typing-bubble"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>`;
       msgs.appendChild(typing);
       msgs.scrollTop = msgs.scrollHeight;
-
       setTimeout(() => {
         typing.remove();
-        const div = document.createElement('div');
-        div.className = 'msg bot';
-        div.innerHTML = `<div class="bot-avatar">💧</div><div><div class="msg-bubble">${text}</div><span class="msg-time">${now()}</span></div>`;
-        msgs.appendChild(div);
-        if(scroll) msgs.scrollTop = msgs.scrollHeight;
-      }, 900);
+        const d = document.createElement('div');
+        d.className = 'msg bot';
+        d.innerHTML = `<div class="bot-avatar">💧</div><div><div class="msg-bubble">${html}</div><span class="msg-time">${nowTime()}</span></div>`;
+        msgs.appendChild(d);
+        msgs.scrollTop = msgs.scrollHeight;
+      }, delay);
     }
 
     function renderUserMsg(text) {
       const msgs = document.getElementById('chatMessages');
-      const div = document.createElement('div');
-      div.className = 'msg user';
-      div.innerHTML = `<div><div class="msg-bubble">${text}</div><span class="msg-time">${now()}</span></div>`;
-      msgs.appendChild(div);
+      const d = document.createElement('div');
+      d.className = 'msg user';
+      d.innerHTML = `<div><div class="msg-bubble">${text}</div><span class="msg-time">${nowTime()}</span></div>`;
+      msgs.appendChild(d);
       msgs.scrollTop = msgs.scrollHeight;
     }
 
     function renderChips(chips) {
       const qb = document.getElementById('quickBtns');
       qb.innerHTML = '';
-      if (!chips || chips.length === 0) { qb.style.display = 'none'; return; }
+      if (!chips || !chips.length) { qb.style.display = 'none'; return; }
       qb.style.display = 'flex';
       chips.forEach(c => {
         const btn = document.createElement('button');
         btn.className = 'quick-btn';
         btn.textContent = c;
-        btn.onclick = () => submitAnswer(c);
+        btn.onclick = () => handleUserInput(c);
         qb.appendChild(btn);
       });
     }
 
-    function setInput(placeholder) {
+    function setInput(placeholder, show = true) {
       const row = document.getElementById('chatInputRow');
-      const input = document.getElementById('chatInput');
-      if (placeholder === null) {
-        row.style.display = 'none';
-        // Show done/restart block
-        const done = document.createElement('div');
-        done.className = 'chat-done-wrap';
-        done.innerHTML = `<p>We'll be in touch soon. ✨<br>Thank you for choosing AkashJal.</p><button class="chat-restart-btn" onclick="chatRestart()">Start New Enquiry</button>`;
-        document.getElementById('chatPanel').appendChild(done);
+      const inp = document.getElementById('chatInput');
+      if (!show) { row.style.display = 'none'; return; }
+      row.style.display = 'flex';
+      inp.placeholder = placeholder || 'Type a message…';
+      inp.value = '';
+      setTimeout(() => inp.focus(), 350);
+    }
+
+    // ── FAQ matcher ───────────────────────────────────────────────
+    function findAnswer(text) {
+      const lower = text.toLowerCase();
+      for (const entry of KB) {
+        if (entry.keys.some(k => lower.includes(k))) return entry.answer;
+      }
+      return null;
+    }
+
+    // ── Lead flow helpers ─────────────────────────────────────────
+    function startLeadFlow() {
+      mode = 'lead';
+      leadStep = 0;
+      data = {};
+      setTimeout(() => {
+        renderBotMsg(`Sure! I'll connect you with our team. Let me collect a few quick details. 📋`);
+        setTimeout(() => {
+          const s = LEAD_STEPS[0];
+          renderBotMsg(typeof s.ask === 'function' ? s.ask(data) : s.ask, 600);
+          setTimeout(() => { renderChips(s.chips); setInput(s.placeholder); }, 1600);
+        }, 1100);
+      }, 200);
+    }
+
+    function advanceLeadStep(val) {
+      const s = LEAD_STEPS[leadStep];
+      const value = val.toLowerCase() === 'skip' ? 'Not provided' : val;
+      data[s.key] = value;
+      leadStep++;
+
+      if (leadStep < LEAD_STEPS.length) {
+        const next = LEAD_STEPS[leadStep];
+        const ask = typeof next.ask === 'function' ? next.ask(data) : next.ask;
+        setTimeout(() => {
+          renderBotMsg(ask, 850);
+          setTimeout(() => { renderChips(next.chips); setInput(next.placeholder); }, 1900);
+        }, 200);
       } else {
-        row.style.display = 'flex';
-        input.placeholder = placeholder;
-        input.value = '';
-        setTimeout(() => input.focus(), 300);
+        // All details collected — send email + show confirmation
+        sendEmail();
       }
     }
 
-    function submitAnswer(val) {
+    // ── EmailJS sender ────────────────────────────────────────────
+    function sendEmail() {
+      const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+      const templateParams = {
+        to_email:   TO_EMAIL,
+        from_name:  data.name     || 'N/A',
+        from_email: data.email    || 'N/A',
+        phone:      data.phone    || 'Not provided',
+        interest:   data.interest || 'N/A',
+        message:    data.message  || 'N/A',
+        timestamp:  timestamp,
+        reply_to:   data.email    || TO_EMAIL,
+      };
+
+      // Show confirmation immediately, send in background
+      renderBotMsg(
+        `Thank you, <strong>${data.name}</strong>! 🌿✨<br><br>` +
+        `We've captured your details and our team will reach out to <strong>${data.email}</strong> within <strong>24 hours</strong>.<br><br>` +
+        `📞 Urgent? Call us: <a href="tel:+919908011939" style="color:var(--teal-deep);font-weight:500;">+91 99080 11939</a><br>` +
+        `📧 Email: <a href="mailto:info@akashjal.com" style="color:var(--teal-deep);">info@akashjal.com</a>`,
+        700
+      );
+
+      setTimeout(() => {
+        setInput(null, false);
+        renderChips([]);
+        // Done footer
+        const done = document.createElement('div');
+        done.className = 'chat-done-wrap';
+        done.innerHTML = `<p>Enquiry submitted ✅<br>Our team will contact you soon.</p><button class="chat-restart-btn" onclick="chatRestart()">New Enquiry</button>`;
+        document.getElementById('chatPanel').appendChild(done);
+
+        // Send via EmailJS
+        if (window.emailjs && EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID') {
+          emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+            .then(() => console.log('AkashJal: Enquiry email sent ✅'))
+            .catch(err => console.warn('EmailJS error:', err));
+        } else {
+          console.log('EmailJS not configured yet. Enquiry data:', templateParams);
+        }
+      }, 1800);
+
+      mode = 'done';
+    }
+
+    // ── Main input handler ────────────────────────────────────────
+    function handleUserInput(val) {
       const trimmed = (val || '').trim();
       if (!trimmed) return;
-
-      // Hide chips
       document.getElementById('quickBtns').style.display = 'none';
 
-      // Save to data using current step's key
-      const currentStep = STEPS[step];
-      if (currentStep.key) {
-        const value = trimmed.toLowerCase() === 'skip' ? 'Not provided' : trimmed;
-        data[currentStep.key] = value;
-        renderUserMsg(trimmed.toLowerCase() === 'skip' ? 'Skip' : trimmed);
-      } else {
-        // Step 0 — saving name (key is null means we save to 'name' based on next step's key)
-        data['name'] = trimmed;
+      if (mode === 'lead') {
         renderUserMsg(trimmed);
+        advanceLeadStep(trimmed);
+        return;
       }
 
-      step++;
+      if (mode === 'done') return;
 
-      if (step < STEPS.length) {
-        setTimeout(() => {
-          renderBotMsg(getBotMsg(step));
-          setTimeout(() => {
-            renderChips(STEPS[step].chips);
-            setInput(STEPS[step].placeholder);
-          }, 1000);
-        }, 300);
+      // FAQ mode
+      renderUserMsg(trimmed);
+
+      const answer = findAnswer(trimmed);
+      if (answer === 'TRIGGER_LEAD_FLOW') {
+        startLeadFlow();
+      } else if (answer) {
+        setTimeout(() => renderBotMsg(answer), 200);
+      } else {
+        // Unknown — give helpful fallback
+        setTimeout(() => renderBotMsg(
+          `I'm not sure about that, but I'm happy to help! 😊<br><br>You can ask me about:<br>💧 Our products &amp; range<br>🏭 The company &amp; philosophy<br>📦 Wholesale &amp; partnerships<br>📞 Contact &amp; location<br><br>Or type <em>"enquire"</em> to connect with our team directly!`
+        ), 200);
       }
     }
 
     function chatReply() {
-      const input = document.getElementById('chatInput');
-      const val = input.value.trim();
+      const inp = document.getElementById('chatInput');
+      const val = inp.value.trim();
       if (!val) return;
-      input.value = '';
-      submitAnswer(val);
+      inp.value = '';
+      handleUserInput(val);
     }
 
     function chatRestart() {
-      step = 0;
+      mode = 'faq';
+      leadStep = 0;
       data = {};
       document.getElementById('chatMessages').innerHTML = '';
       const done = document.querySelector('.chat-done-wrap');
       if (done) done.remove();
-      document.getElementById('chatInputRow').style.display = 'flex';
-      document.getElementById('quickBtns').style.display = 'none';
+      setInput('Ask me anything about AkashJal…');
+      renderChips([]);
       setTimeout(() => {
-        renderBotMsg(getBotMsg(0));
-        setTimeout(() => { renderChips(STEPS[0].chips); setInput(STEPS[0].placeholder); }, 1000);
+        renderBotMsg(
+          `Namaste! 🙏 Welcome back to <strong>AkashJal</strong>.<br><br>Ask me anything about our products, the company, or partnerships. Or type <em>"enquire"</em> to connect with our team!`
+        );
       }, 200);
     }
 
     function toggleChat() {
       const panel = document.getElementById('chatPanel');
       const badge = document.getElementById('chatBadge');
-      const iconOpen = document.getElementById('chatIconOpen');
+      const iconOpen  = document.getElementById('chatIconOpen');
       const iconClose = document.getElementById('chatIconClose');
       chatOpen = !chatOpen;
       panel.classList.toggle('open', chatOpen);
       badge.classList.add('hidden');
-      iconOpen.style.display = chatOpen ? 'none' : 'block';
+      iconOpen.style.display  = chatOpen ? 'none'  : 'block';
       iconClose.style.display = chatOpen ? 'block' : 'none';
 
-      // Start conversation on first open
-      if (chatOpen && document.getElementById('chatMessages').children.length === 0) {
+      if (chatOpen && !initialized) {
+        initialized = true;
         setTimeout(() => {
-          renderBotMsg(getBotMsg(0));
-          setTimeout(() => { renderChips(STEPS[0].chips); setInput(STEPS[0].placeholder); }, 1000);
-        }, 300);
+          renderBotMsg(
+            `Namaste! 🙏 I'm <strong>Priya</strong>, your AkashJal assistant.<br><br>` +
+            `I can answer questions about our products, company &amp; partnerships, or help you get in touch with our team.<br><br>` +
+            `What would you like to know? 💧`
+          );
+          setTimeout(() => {
+            renderChips(['Our Products','Alkaline Water','Botanical Infusions','Wholesale & Partnerships','Contact & Location','Enquire Now']);
+            setInput('Ask me anything about AkashJal…');
+          }, 1100);
+        }, 350);
       }
     }
 
-    // Expose globally
-    window.toggleChat = toggleChat;
-    window.chatReply = chatReply;
+    window.toggleChat  = toggleChat;
+    window.chatReply   = chatReply;
     window.chatRestart = chatRestart;
   })();
 </script>
