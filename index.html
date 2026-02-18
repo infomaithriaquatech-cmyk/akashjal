@@ -1647,7 +1647,35 @@ nav.scrolled .hamburger span { background:var(--ink); }
       const total = 2;
       const track = document.getElementById('phaseVTrack');
       if (!track) return;
+
       function phaseGoTo(n) {
         cur = (n + total) % total;
         track.style.transform = 'translateX(-' + (cur * 100) + '%)';
-        document.querySelectorAll('.phas
+        document.querySelectorAll('.phase-vdot').forEach((d, i) => d.classList.toggle('active', i === cur));
+      }
+
+      function phaseSlide(dir) {
+        phaseGoTo(cur + dir);
+      }
+
+      // Expose globally so onclick attributes work
+      window.phaseGoTo = phaseGoTo;
+      window.phaseSlide = phaseSlide;
+
+      // Auto-advance every 6 seconds
+      let phaseAuto = setInterval(() => phaseGoTo(cur + 1), 6000);
+      const vslider = document.querySelector('.phase-vslider');
+      if (vslider) {
+        vslider.addEventListener('mouseenter', () => clearInterval(phaseAuto));
+        vslider.addEventListener('mouseleave', () => {
+          phaseAuto = setInterval(() => phaseGoTo(cur + 1), 6000);
+        });
+      }
+
+      phaseGoTo(0);
+    })();
+
+  }); // end DOMContentLoaded
+</script>
+</body>
+</html>
