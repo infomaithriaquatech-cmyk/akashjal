@@ -487,10 +487,12 @@ footer { background:var(--dark); padding:80px 64px 48px; }
 .footer-col address a { color:rgba(255,255,255,0.65); text-decoration:none; display:block; }
 .footer-col address a:hover { color:var(--teal-light); }
 .footer-bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
-.footer-copy { font-size:12px; color:rgba(255,255,255,0.3); letter-spacing:0.08em; }
+.footer-copy { font-size:12px; color:#fff; letter-spacing:0.08em; }
 .footer-bottom-links { display:flex; gap:24px; }
-.footer-bottom-links a { font-size:12px; color:rgba(255,255,255,0.3); text-decoration:none; transition:color 0.3s; }
-.footer-bottom-links a:hover { color:rgba(255,255,255,0.6); }
+.footer-bottom-links a { font-size:12px; color:#fff; text-decoration:none; transition:color 0.3s; }
+.footer-bottom-links a:hover { color:var(--teal-light); }
+.footer-designer { font-family:'Cormorant Garamond',serif; font-size:13px; font-style:italic; color:#fff; letter-spacing:0.12em; }
+.footer-designer span { font-style:normal; font-weight:600; color:var(--teal-light); letter-spacing:0.18em; text-transform:uppercase; font-size:12px; font-family:'DM Sans',sans-serif; }
 
 /* RESPONSIVE */
 @media(max-width:1200px) {
@@ -1469,6 +1471,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 Prana AkashJal Pvt. Ltd. — All Rights Reserved.</p>
+    <p class="footer-designer">Crafted with care by <span>Aryan Mohanty</span></p>
     <div class="footer-bottom-links">
       <a href="#">Privacy Policy</a>
       <a href="#">Terms of Use</a>
