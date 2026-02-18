@@ -64,12 +64,12 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .nav-cta:hover { background:var(--teal); transform:translateY(-1px); box-shadow:0 6px 20px var(--shadow); }
 
 /* HERO */
-#hero { min-height:100vh; position:relative; display:flex; align-items:stretch; overflow:hidden; background:linear-gradient(135deg,#F0FAFA 0%,#E6F4F8 40%,#F7F9FC 100%); }
+#hero { min-height:100vh; position:relative; display:flex; align-items:center; overflow:hidden; background:linear-gradient(135deg,#F0FAFA 0%,#E6F4F8 40%,#F7F9FC 100%); }
 .hero-water-bg { position:absolute; inset:0; overflow:hidden; }
 .bubble { position:absolute; border-radius:50%; background:radial-gradient(circle at 35% 35%,rgba(255,255,255,0.9),rgba(75,200,200,0.15)); border:1px solid rgba(75,200,200,0.3); animation:bubble-rise var(--dur,10s) var(--delay,0s) infinite ease-in-out; }
 @keyframes bubble-rise { 0%{transform:translateY(0) scale(1);opacity:0;} 10%{opacity:1;} 90%{opacity:0.5;} 100%{transform:translateY(-120vh) translateX(var(--dx,20px)) scale(0.8);opacity:0;} }
 .wave-bottom { position:absolute; bottom:0; left:0; right:0; }
-.hero-container { max-width:1300px; margin:0 auto; padding:100px 64px 60px; width:100%; min-height:100vh; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:2; }
+.hero-container { max-width:1300px; margin:0 auto; padding:140px 64px 60px; width:100%; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:2; }
 .hero-left { animation:slide-right 1s ease forwards; }
 @keyframes slide-right { from{opacity:0;transform:translateX(-40px);} to{opacity:1;transform:translateX(0);} }
 .hero-eyebrow { display:inline-flex; align-items:center; gap:12px; padding:8px 18px; border-radius:50px; background:rgba(34,165,165,0.1); border:1px solid rgba(34,165,165,0.2); font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--teal-deep); margin-bottom:32px; font-weight:400; }
@@ -85,7 +85,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
 .hero-stats { display:flex; gap:32px; margin-top:52px; padding-top:32px; border-top:1px solid var(--border); }
 .stat-num { font-family:'Cormorant Garamond'; font-size:36px; font-weight:400; color:var(--teal-deep); display:block; }
 .stat-label { font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--light); font-weight:400; }
-.hero-right { position:relative; display:flex; justify-content:center; align-items:center; animation:slide-left 1s ease 0.2s forwards; opacity:0; align-self:center; min-height:560px; }
+.hero-right { position:relative; display:flex; justify-content:center; align-items:center; animation:slide-left 1s ease 0.2s forwards; opacity:0; min-height:580px; }
 @keyframes slide-left { from{opacity:0;transform:translateX(40px);} to{opacity:1;transform:translateX(0);} }
 .hero-glow { position:absolute; width:420px; height:420px; border-radius:50%; background:radial-gradient(circle,rgba(34,165,165,0.12) 0%,rgba(91,200,239,0.06) 50%,transparent 70%); animation:glow-pulse 4s ease-in-out infinite; }
 @keyframes glow-pulse { 0%,100%{transform:scale(1);opacity:0.8;} 50%{transform:scale(1.06);opacity:1;} }
@@ -95,11 +95,11 @@ nav.scrolled .hamburger span { background:var(--ink); }
 @keyframes ring-out { 0%{width:80px;height:80px;opacity:0.8;} 100%{width:500px;height:500px;opacity:0;} }
 .drop { position:absolute; font-size:var(--fs,24px); animation:drop-float var(--d,5s) var(--dl,0s) infinite ease-in-out; }
 @keyframes drop-float { 0%,100%{transform:translateY(0) rotate(0deg);opacity:0.7;} 50%{transform:translateY(-12px) rotate(5deg);opacity:1;} }
-.ph-badge { position:absolute; top:50px; right:0px; background:#fff; border-radius:16px; padding:14px 20px; text-align:center; box-shadow:0 8px 30px rgba(26,122,122,0.15); border:1px solid var(--border); z-index:10; animation:badge-float 6s ease-in-out 1s infinite; }
+.ph-badge { position:absolute; top:60px; right:20px; background:#fff; border-radius:16px; padding:14px 20px; text-align:center; box-shadow:0 8px 30px rgba(26,122,122,0.15); border:1px solid var(--border); z-index:10; animation:badge-float 6s ease-in-out 1s infinite; }
 @keyframes badge-float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
 .ph-num { font-family:'Cormorant Garamond'; font-size:32px; color:var(--teal-deep); font-weight:400; display:block; line-height:1; }
 .ph-label { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--light); margin-top:4px; }
-.pure-badge { position:absolute; bottom:180px; left:0px; background:linear-gradient(135deg,var(--teal-deep),var(--teal)); color:#fff; border-radius:12px; padding:12px 18px; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; font-weight:400; box-shadow:0 6px 20px rgba(26,122,122,0.3); z-index:10; animation:badge-float 5s ease-in-out infinite; }
+.pure-badge { position:absolute; top:140px; left:10px; background:linear-gradient(135deg,var(--teal-deep),var(--teal)); color:#fff; border-radius:12px; padding:12px 18px; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; font-weight:400; box-shadow:0 6px 20px rgba(26,122,122,0.3); z-index:10; animation:badge-float 5s ease-in-out infinite; }
 
 /* TICKER */
 .ticker { background:var(--teal-deep); padding:14px 0; overflow:hidden; white-space:nowrap; }
@@ -892,7 +892,7 @@ nav.scrolled .hamburger span { background:var(--ink); }
       <div class="bottle-wrap">
         <img src="bottle.png"
              alt="AkashJal Premium Alkaline Water Bottle"
-             style="height:460px;width:auto;object-fit:contain;filter:drop-shadow(0 20px 60px rgba(26,122,122,0.25));"/>
+             style="height:400px;width:auto;object-fit:contain;filter:drop-shadow(0 20px 60px rgba(26,122,122,0.25));"/>
       </div>
       <div class="drop" style="top:15%;left:8%;--fs:32px;--d:5s;--dl:0s;">💧</div>
       <div class="drop" style="top:65%;right:5%;--fs:20px;--d:7s;--dl:1s;">💧</div>
