@@ -3,11 +3,6 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Akash Jal — India's first premium atmospheric water brand. Water born from the sky, rooted in ancient Indian elemental philosophy. pH 8+, zero groundwater, 330ml aluminium can."/>
-<meta property="og:title" content="Akash Jal — Water, Born from the Sky"/>
-<meta property="og:description" content="Premium atmospheric water. Sky-sourced. Indian in soul. Global in ambition."/>
-<meta property="og:type" content="website"/>
-<meta name="theme-color" content="#0284c7"/>
 <title>Akash Jal – Water, Born from the Sky</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Noto+Serif+Devanagari:wght@300;400&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet"/>
 <script>
@@ -911,28 +906,7 @@ footer::after{
 <!-- ── NAVBAR ── -->
 <header>
   <div class="brand-wrap" onclick="goTo('hero')">
-    <svg width="68" height="68" viewBox="0 0 68 68" xmlns="http://www.w3.org/2000/svg" class="nav-logo-img" style="flex-shrink:0;">
-      <defs>
-        <radialGradient id="nl-halo" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="#bae6fd" stop-opacity="0.5"/><stop offset="100%" stop-color="#0284c7" stop-opacity="0"/></radialGradient>
-        <linearGradient id="nl-drop" x1="20%" y1="0%" x2="80%" y2="100%"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="55%" stop-color="#0ea5e9"/><stop offset="100%" stop-color="#0369a1"/></linearGradient>
-        <linearGradient id="nl-ring" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#0284c7"/></linearGradient>
-        <filter id="nl-glow"><feGaussianBlur stdDeviation="2.5" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
-      </defs>
-      <!-- outer glow halo -->
-      <circle cx="34" cy="34" r="32" fill="url(#nl-halo)"/>
-      <!-- outer ring -->
-      <circle cx="34" cy="34" r="30" fill="none" stroke="url(#nl-ring)" stroke-width="1.2" stroke-opacity=".55"/>
-      <circle cx="34" cy="34" r="25" fill="none" stroke="#38bdf8" stroke-width=".6" stroke-opacity=".30" stroke-dasharray="3 5"/>
-      <!-- water drop -->
-      <path d="M34 10 C34 10, 52 30, 52 42 C52 52.5 43.9 60 34 60 C24.1 60 16 52.5 16 42 C16 30 34 10 34 10Z" fill="url(#nl-drop)" filter="url(#nl-glow)" opacity=".95"/>
-      <!-- inner shine -->
-      <ellipse cx="28" cy="36" rx="3.5" ry="7" fill="rgba(255,255,255,.45)" transform="rotate(-18,28,36)"/>
-      <ellipse cx="26" cy="30" rx="1.4" ry="2.5" fill="rgba(255,255,255,.65)" transform="rotate(-18,26,30)"/>
-      <!-- centre spark -->
-      <circle cx="34" cy="42" r="3" fill="rgba(255,255,255,.25)" filter="url(#nl-glow)"/>
-      <!-- top droplet dot -->
-      <circle cx="34" cy="10" r="1.8" fill="#bae6fd" opacity=".80"/>
-    </svg>
+    <img src="logoo.png" alt="Akash Jal Logo" class="nav-logo-img" onerror="this.style.display='none'"/>
     <div class="brand-text-wrap">
       <div class="nav-brand">AKASH JAL</div>
       <div class="nav-sub">CRAFTED FROM AIR</div>
@@ -965,7 +939,7 @@ footer::after{
 <!-- ── HERO ── -->
 <section class="hero z1" id="hero">
   <div class="hero-vid">
-    <img src="hero-bg.jpg" alt="Akash Jal Hero Background" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.style.background='linear-gradient(135deg,rgba(7,89,133,.30) 0%,rgba(3,105,161,.20) 50%,rgba(186,230,253,.18) 100%)';this.style.display='none';"/>
+    <img src="hero-bg.jpg" alt="Akash Jal Hero Background" style="width:100%;height:100%;object-fit:cover;display:block;"/>
   </div>
   <div class="hero-vid-tint"></div>
   <div class="hero-grid">
@@ -1003,111 +977,7 @@ footer::after{
       <div class="hero-ring-2"><div class="ring-dot"></div></div>
       <div class="hero-ring-3"></div>
       <div class="hero-can-wrap">
-        <svg width="220" height="420" viewBox="0 0 220 420" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 60px 100px rgba(2,132,199,.45));animation:floatUp 7s ease-in-out infinite;" aria-label="Akash Jal Can">
-          <defs>
-            <linearGradient id="hc-body" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#082d4f"/>
-              <stop offset="18%" stop-color="#0e4d85"/>
-              <stop offset="42%" stop-color="#1a7ec8"/>
-              <stop offset="58%" stop-color="#5bb5e8"/>
-              <stop offset="72%" stop-color="#a8d8f0"/>
-              <stop offset="82%" stop-color="#5bb5e8"/>
-              <stop offset="100%" stop-color="#082d4f"/>
-            </linearGradient>
-            <linearGradient id="hc-top" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#1a6ab5"/>
-              <stop offset="100%" stop-color="#0a3d70"/>
-            </linearGradient>
-            <linearGradient id="hc-bot" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#0b3d72"/>
-              <stop offset="100%" stop-color="#061e3a"/>
-            </linearGradient>
-            <linearGradient id="hc-shine" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="rgba(255,255,255,.55)"/>
-              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-            </linearGradient>
-            <linearGradient id="hc-wave" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="rgba(56,189,248,0)"/>
-              <stop offset="30%" stop-color="rgba(56,189,248,.18)"/>
-              <stop offset="60%" stop-color="rgba(14,165,233,.25)"/>
-              <stop offset="100%" stop-color="rgba(56,189,248,0)"/>
-            </linearGradient>
-            <radialGradient id="hc-highlight" cx="30%" cy="35%" r="40%">
-              <stop offset="0%" stop-color="rgba(255,255,255,.30)"/>
-              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-            </radialGradient>
-            <clipPath id="hc-clip">
-              <rect x="18" y="34" width="184" height="340" rx="12"/>
-            </clipPath>
-            <filter id="hc-inner-shadow">
-              <feOffset dx="0" dy="2"/>
-              <feGaussianBlur stdDeviation="3"/>
-              <feComposite in2="SourceGraphic" operator="in"/>
-            </filter>
-          </defs>
-
-          <!-- CAN TOP LID -->
-          <ellipse cx="110" cy="35" rx="92" ry="20" fill="url(#hc-top)"/>
-          <ellipse cx="110" cy="33" rx="82" ry="14" fill="#1255a8" opacity=".70"/>
-          <!-- Pull tab area -->
-          <ellipse cx="110" cy="33" rx="22" ry="6" fill="#0c3d7a" opacity=".90"/>
-          <rect x="102" y="26" width="16" height="5" rx="2.5" fill="#1a6ab5"/>
-          <rect x="107" y="22" width="6" height="8" rx="3" fill="#1e7ac8"/>
-          <ellipse cx="110" cy="33" rx="9" ry="3" fill="none" stroke="#38bdf8" stroke-width="1" stroke-opacity=".55"/>
-
-          <!-- CAN BODY -->
-          <rect x="18" y="34" width="184" height="340" rx="12" fill="url(#hc-body)"/>
-
-          <!-- HIGHLIGHT / SHINE STRIP -->
-          <rect x="28" y="34" width="38" height="340" rx="0" fill="url(#hc-shine)" clip-path="url(#hc-clip)" opacity=".60"/>
-
-          <!-- SKY GRADIENT BAND across middle -->
-          <rect x="18" y="100" width="184" height="220" fill="url(#hc-wave)" clip-path="url(#hc-clip)" opacity=".80"/>
-
-          <!-- WAVE LINES - atmospheric -->
-          <g clip-path="url(#hc-clip)" opacity=".55">
-            <path d="M18 210 Q55 195, 110 210 Q165 225, 202 210" fill="none" stroke="#38bdf8" stroke-width="1.2" stroke-opacity=".50"/>
-            <path d="M18 225 Q60 210, 110 225 Q160 240, 202 225" fill="none" stroke="#7dd3fc" stroke-width=".8" stroke-opacity=".38"/>
-            <path d="M18 240 Q50 228, 110 240 Q170 252, 202 240" fill="none" stroke="#38bdf8" stroke-width=".6" stroke-opacity=".28"/>
-          </g>
-
-          <!-- HIGHLIGHT OVAL -->
-          <ellipse cx="110" cy="205" rx="84" ry="162" fill="url(#hc-highlight)" clip-path="url(#hc-clip)"/>
-
-          <!-- BRAND ELEMENTS -->
-          <!-- Water drop icon -->
-          <g transform="translate(110,125)" clip-path="url(#hc-clip)">
-            <path d="M0,-26 C0,-26 22,0 22,14 C22,26 11.5,34 0,34 C-11.5,34 -22,26 -22,14 C-22,0 0,-26 0,-26Z" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/>
-            <ellipse cx="-7" cy="10" rx="5" ry="10" fill="rgba(255,255,255,.25)" transform="rotate(-20,-7,10)"/>
-            <circle cx="0" cy="-26" r="2" fill="rgba(255,255,255,.80)"/>
-          </g>
-
-          <!-- AKASH JAL text -->
-          <text x="110" y="188" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="26" font-weight="700" fill="#ffffff" letter-spacing="6" opacity=".98">AKASH</text>
-          <text x="110" y="215" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="26" font-weight="700" fill="#ffffff" letter-spacing="6" opacity=".98">JAL</text>
-
-          <!-- divider line -->
-          <line x1="54" y1="224" x2="166" y2="224" stroke="rgba(255,255,255,.38)" stroke-width=".8"/>
-
-          <!-- tagline -->
-          <text x="110" y="244" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="rgba(255,255,255,.70)" letter-spacing="3.5">CRAFTED FROM AIR</text>
-
-          <!-- pH badge -->
-          <g transform="translate(110,285)">
-            <rect x="-30" y="-11" width="60" height="22" rx="11" fill="rgba(56,189,248,.18)" stroke="rgba(56,189,248,.45)" stroke-width="1"/>
-            <text x="0" y="5" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#7dd3fc" letter-spacing="1.5">pH 8+ · 330ml</text>
-          </g>
-
-          <!-- Sanskrit text small -->
-          <text x="110" y="323" text-anchor="middle" font-family="'Noto Serif Devanagari','Cormorant Garamond',serif" font-size="10" fill="rgba(255,255,255,.38)" letter-spacing="1">आकाशात् जलम्</text>
-
-          <!-- CAN BOTTOM LID -->
-          <ellipse cx="110" cy="374" rx="92" ry="20" fill="url(#hc-bot)"/>
-          <ellipse cx="110" cy="372" rx="80" ry="13" fill="#061e3a" opacity=".55"/>
-
-          <!-- RIGHT EDGE DARK SHADOW -->
-          <rect x="176" y="34" width="26" height="340" fill="rgba(6,30,58,.45)" clip-path="url(#hc-clip)" rx="0"/>
-        </svg>
+        <img src="can1.png" alt="Akash Jal" class="hero-can-img" onerror="this.src=''"/>
         <div class="can-shadow"></div>
       </div>
     </div>
@@ -1500,46 +1370,6 @@ footer::after{
 <style>
 @media(max-width:1080px){.planet-hero-split{grid-template-columns:1fr!important;}}
 .sci-stat-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(2,132,199,.14);}
-
-/* ── ENHANCED MICRO-INTERACTIONS ── */
-.rj-story-card,.rj-cred-item,.rj-phil-point,.hero-stat-card{
-  transition:transform .32s cubic-bezier(.22,1,.36,1),border-color .32s,box-shadow .32s;
-}
-.rj-story-card:hover,.rj-cred-item:hover,.rj-phil-point:hover{
-  transform:translateY(-5px) scale(1.012);
-}
-.hero-stat-card:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 12px 32px rgba(2,132,199,.18);}
-
-/* Chat widget smooth scroll */
-.chat-body{scroll-behavior:smooth;}
-
-/* Quick button hover ripple */
-.chat-quick-btn{position:relative;overflow:hidden;}
-.chat-quick-btn::after{content:'';position:absolute;inset:0;background:rgba(2,132,199,.12);opacity:0;border-radius:inherit;transition:opacity .2s;}
-.chat-quick-btn:hover::after{opacity:1;}
-
-/* Enhanced yantram section */
-.yantram-wrap{transition:box-shadow .3s;}
-.yantram-wrap:hover{box-shadow:0 0 48px rgba(251,191,36,.12);}
-
-/* Marquee pause on hover */
-.marquee-strip:hover .marquee-track{animation-play-state:paused;}
-
-/* Footer link underline effect */
-.footer-link{border-bottom:1px solid transparent;transition:color .25s,transform .25s,border-color .25s;}
-.footer-link:hover{border-bottom-color:rgba(56,189,248,.35);}
-
-/* Better focus styles */
-.form-input:focus,.form-select:focus,.form-textarea:focus,.chat-input:focus{outline:none;border-color:rgba(2,132,199,.55);box-shadow:0 0 0 4px rgba(2,132,199,.10);}
-
-/* Nav hover underline */
-.menu-item{transition:color .22s,opacity .22s;}
-
-/* SKU pill active animation */
-.sku-pill{transition:background .25s,border-color .25s,color .25s,transform .22s;}
-.sku-pill.active{transform:scale(1.04);}
-.sku-pill:hover:not(.active){transform:scale(1.02);}
-
 </style>
 
 <!-- ── PRODUCTS ── -->
@@ -1729,7 +1559,7 @@ footer::after{
       <div class="rj-founder-card reveal">
         <div class="rj-founder-avatar">
           <img src="founder-bhagawan.jpg" alt="Dr Bhagawan" onerror="this.style.display='none';this.parentElement.querySelector('.rj-founder-initials').style.display='flex'"/>
-          <span class="rj-founder-initials" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--sky-900);background:linear-gradient(135deg,#bae6fd,#7dd3fc);">B</span>
+          <span class="rj-founder-initials" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--sky-900);">B</span>
         </div>
         <div class="rj-founder-role">Founder</div>
         <h3 class="rj-founder-name">Dr Bhagawan</h3>
@@ -1738,7 +1568,7 @@ footer::after{
       <div class="rj-founder-card reveal">
         <div class="rj-founder-avatar">
           <img src="founder-nagaraj.jpg" alt="Vedula Nagaraj" onerror="this.style.display='none';this.parentElement.querySelector('.rj-founder-initials').style.display='flex'"/>
-          <span class="rj-founder-initials" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--sky-900);background:linear-gradient(135deg,#7dd3fc,#38bdf8);">VN</span>
+          <span class="rj-founder-initials" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--sky-900);">VN</span>
         </div>
         <div class="rj-founder-role">Co-Founder</div>
         <h3 class="rj-founder-name">Vedula Nagaraj</h3>
@@ -1841,20 +1671,7 @@ footer::after{
   <!-- Brand strip -->
   <div class="footer-brand-strip">
     <div class="footer-brand-strip-left">
-      <svg width="76" height="76" viewBox="0 0 68 68" xmlns="http://www.w3.org/2000/svg" class="footer-logo-img" style="flex-shrink:0;">
-        <defs>
-          <radialGradient id="fl-halo" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="#7dd3fc" stop-opacity=".40"/><stop offset="100%" stop-color="#0284c7" stop-opacity="0"/></radialGradient>
-          <linearGradient id="fl-drop" x1="20%" y1="0%" x2="80%" y2="100%"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="55%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#0369a1"/></linearGradient>
-          <linearGradient id="fl-ring" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#0ea5e9"/></linearGradient>
-          <filter id="fl-glow"><feGaussianBlur stdDeviation="3" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
-        </defs>
-        <circle cx="34" cy="34" r="32" fill="url(#fl-halo)"/>
-        <circle cx="34" cy="34" r="30" fill="none" stroke="url(#fl-ring)" stroke-width="1.2" stroke-opacity=".70"/>
-        <path d="M34 10 C34 10, 52 30, 52 42 C52 52.5 43.9 60 34 60 C24.1 60 16 52.5 16 42 C16 30 34 10 34 10Z" fill="url(#fl-drop)" filter="url(#fl-glow)" opacity=".95"/>
-        <ellipse cx="28" cy="36" rx="3.5" ry="7" fill="rgba(255,255,255,.40)" transform="rotate(-18,28,36)"/>
-        <ellipse cx="26" cy="30" rx="1.4" ry="2.5" fill="rgba(255,255,255,.60)" transform="rotate(-18,26,30)"/>
-        <circle cx="34" cy="10" r="1.8" fill="#bae6fd" opacity=".85"/>
-      </svg>
+      <img src="logoo.png" alt="Akash Jal" class="footer-logo-img" onerror="this.style.display='none'"/>
       <div class="footer-brand-info">
         <div class="footer-brand">AKASH JAL</div>
         <div class="footer-sub">Crafted From Air &nbsp;·&nbsp; Born from the Sky</div>
@@ -2103,58 +1920,129 @@ window.addEventListener('scroll', function(){
   fabTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
 }, {passive:true});
 
-// ── Aryan Chat — Claude API Powered ─────────────────
-const ARYAN_SYSTEM = `You are Aryan, the brand specialist and ambassador for Akash Jal — India's first premium atmospheric water brand. You are knowledgeable, warm, and passionate about the brand.
+// ── Aryan Chat — Rich Knowledge Base ─────────────────
+const KB = {
+  about:`<strong>🌊 Prana AkashJal Pvt. Ltd.</strong><br><br>
+We are India's first <em>premium atmospheric water brand</em> — <strong>"Water, Born from the Sky."</strong><br><br>
+We extract pure water directly from atmospheric air using advanced AWG (Atmospheric Water Generation) technology, guided by ancient Indian elemental philosophy.<br><br>
+📍 Based in <strong>Hyderabad, Telangana</strong><br>
+🌐 <strong>www.akashjal.com</strong><br>
+📧 <strong>info@akashjal.com</strong>`,
 
-BRAND OVERVIEW:
-- Company: Prana AkashJal Pvt. Ltd.
-- Based in: Plot No. 134, I.D.A., Phase III, Cherlapally, TSIIC-IALA, Hyderabad – 500051, Telangana
-- Phone: +91 99080 11939 | Email: info@akashjal.com | Website: www.akashjal.com
-- The brand creates premium water from atmospheric air using AWG (Atmospheric Water Generation) technology
+  products:`<strong>💧 Our Products</strong><br><br>
+<strong>Flagship — 330ml Aluminium Can</strong><br>
+• Premium atmospheric water in a sleek, recyclable aluminium can<br>
+• Alkaline pH 8+ for better hydration & body balance<br>
+• Ultra-Low TDS (Total Dissolved Solids) — exceptionally clean<br>
+• Zero synthetic additives or minerals added<br>
+• Infused with Panchabhuta philosophy in every drop<br><br>
+<strong>Designed for:</strong> Hotels, Airlines, Restaurants, Premium Retail, Wellness Brands, Events & Corporate gifting<br><br>
+📩 For bulk pricing & orders: <strong>info@akashjal.com</strong>`,
 
-TECHNOLOGY: 7-stage AWG process — Air Intake → Condensation → Pre-filtration → RO Purification → UV Sterilisation → Alkaline Mineralisation → Ozonation. Result: pH 8+, ultra-low TDS, 100% atmospheric origin, zero groundwater.
+  technology:`<strong>⚗️ Air-to-Water Technology (AWG)</strong><br><br>
+Our multi-stage purification process:<br><br>
+<strong>1. Air Intake</strong> — Atmospheric air is drawn in through precision filters<br>
+<strong>2. Condensation</strong> — Air is cooled to dew point; moisture condenses into raw water<br>
+<strong>3. Pre-filtration</strong> — Removes dust, particulates, and contaminants<br>
+<strong>4. RO Purification</strong> — Reverse osmosis removes dissolved solids<br>
+<strong>5. UV Sterilisation</strong> — Eliminates bacteria, viruses and microorganisms<br>
+<strong>6. Alkaline Mineralisation</strong> — pH is raised to 8+ with natural minerals<br>
+<strong>7. Ozonation</strong> — Final sterilisation and freshness lock<br><br>
+The result: water that is <strong>cleaner than any ground or spring source</strong> — born entirely from the sky.`,
 
-PHILOSOPHY: Rooted in Panchabhuta (5 elements) — Akasha (Sky), Vayu (Air), Agni (Energy), Jal (Water), Prithvi (Earth). The brand name = Akash (Sky) + Jal (Water) = Water from the Sky.
+  philosophy:`<strong>🕉️ Panchabhuta Philosophy</strong><br><br>
+Akash Jal is built on the ancient Indian concept of <em>five sacred elements</em>:<br><br>
+🌌 <strong>Akasha (Space/Ether)</strong> — The infinite sky where our water originates<br>
+💨 <strong>Vayu (Air)</strong> — The atmosphere that carries moisture<br>
+🔥 <strong>Agni (Fire/Energy)</strong> — The energy driving our technology<br>
+💧 <strong>Jal (Water)</strong> — The pure output, life itself<br>
+🌍 <strong>Prithvi (Earth)</strong> — What we protect by never touching groundwater<br><br>
+<em>From Akasha to Vayu, from Vayu to Jal</em> — our entire brand story is this elemental journey.<br><br>
+The brand name itself: <strong>Akash</strong> (Sky) + <strong>Jal</strong> (Water) = Water from the Sky.`,
 
-PRODUCTS:
-1. Electrolyte Series (Flagship) — 330ml aluminium can, pH 8+, air-sourced, ultra-low TDS
-2. Elemental Infusions (Artisanal) — Guava Pink, Cinnamon Amber, Jeera Brown variants
-3. Hospitality Edition (Premium B2B) — Hotels, airlines, lounges, custom branding
+  sustainability:`<strong>🌿 Our Eco Mission</strong><br><br>
+Akash Jal is one of the most sustainable water brands on earth:<br><br>
+✅ <strong>Zero Groundwater Extraction</strong> — We never touch underground aquifers<br>
+✅ <strong>Zero River/Lake Depletion</strong> — 100% atmosphere-sourced<br>
+✅ <strong>Recyclable Aluminium Cans</strong> — Infinitely recyclable packaging<br>
+✅ <strong>Energy-Efficient AWG Units</strong> — Optimised for low power consumption<br>
+✅ <strong>No Plastic Bottles</strong> — Our commitment to a plastic-free future<br>
+✅ <strong>Carbon Footprint Awareness</strong> — Actively working toward carbon neutrality<br><br>
+<em>"We take from the sky, not the earth."</em><br>
+India faces a severe groundwater crisis — Akash Jal is a direct solution.`,
 
-SUSTAINABILITY: Zero groundwater extraction, zero rivers/lakes depleted, recyclable aluminium cans, no plastic bottles, 100% atmosphere-sourced.
+  geometry:`<strong>🌍 Planet — Sacred Geometry Identity</strong><br><br>
+Our visual language is rooted in two ancient geometric systems:<br><br>
+<strong>Kanakadhara Yantram</strong><br>
+The yantra of abundance, flow, and divine prosperity. Concentric rings, overlapping squares, and triangles — representing the cyclical flow from sky to water. <em>"A flow that gives from the sky, not takes from the earth."</em><br><br>
+<strong>Platonic Solids</strong><br>
+• <strong>Octahedron</strong> → represents Air (Vayu) — subtle structure, movement<br>
+• <strong>Icosahedron</strong> → represents Water (Jal) — flow and transformation<br>
+• Our logo evolves from these forms — geometry as brand identity<br><br>
+Every design element tells the story of <em>air becoming water</em>.`,
 
-CERTIFICATIONS: BIS Certified, FSSAI Approved, ISO 22000, WHO Guidelines compliant.
+  partner:`<strong>🤝 Partner with Akash Jal</strong><br><br>
+We welcome all forms of collaboration:<br><br>
+<strong>Distribution Partners</strong><br>
+Become an authorised distributor across India or internationally<br><br>
+<strong>Hospitality & F&B</strong><br>
+Hotels, resorts, fine dining restaurants, airlines, lounges — elevate your water offering<br><br>
+<strong>Corporate & Events</strong><br>
+Premium branded water for corporate gifting, conferences, weddings, luxury events<br><br>
+<strong>Wellness & Lifestyle</strong><br>
+Yoga studios, spas, gyms, health brands — align with our conscious philosophy<br><br>
+<strong>Investment & Funding</strong><br>
+We are open to strategic investors who share our vision<br><br>
+📧 Write to us: <strong>info@akashjal.com</strong><br>
+📍 Visit: Plot No. 134, I.D.A., Phase III, Cherlapally, Hyderabad – 500051`,
 
-SACRED GEOMETRY: Kanakadhara Yantram (abundance, flow) and Platonic Solids (Octahedron=Air, Icosahedron=Water) form the visual identity.
+  contact:`<strong>📍 Contact Akash Jal</strong><br><br>
+<strong>Prana AkashJal Pvt. Ltd.</strong><br><br>
+📌 <strong>Address:</strong><br>Plot No. 134, I.D.A., Phase III<br>Cherlapally, TSIIC-IALA<br>Hyderabad – 500051, Telangana<br><br>
+📧 <strong>Email:</strong> info@akashjal.com<br>
+🌐 <strong>Website:</strong> www.akashjal.com<br><br>
+⏰ <strong>Business Hours:</strong> Mon–Sat, 10 AM – 6 PM IST<br><br>
+For partnerships, bulk orders, or media enquiries — reach us at <strong>info@akashjal.com</strong>`,
 
-FOUNDERS: Dr Bhagawan (Founder — brand vision & market creation), Vedula Nagaraj (Co-Founder — commercial strategy & premium market direction).
+  founder:`<strong>👤 Aryan Mohanty — Founder & Creative Director</strong><br><br>
+Aryan Mohanty is the visionary behind Akash Jal — a brand that bridges ancient Indian philosophy with modern water science.<br><br>
+As founder, he oversees:<br>
+• Brand identity & sacred geometry design system<br>
+• Product development & packaging<br>
+• Marketing strategy & digital presence<br>
+• B2B partnerships & investor relations<br><br>
+<em>"Water is not just a commodity — it is the living embodiment of Jal, one of the five sacred elements. Akash Jal was created to honour that truth."</em><br>— Aryan Mohanty`,
 
-PARTNERSHIPS: Distribution, hospitality (hotels/airlines/restaurants), corporate gifting, events, investor enquiries.
+  certifications:`<strong>🏅 Quality & Standards</strong><br><br>
+Akash Jal is committed to the highest standards of water quality and safety:<br><br>
+✅ <strong>BIS Certified</strong> — Bureau of Indian Standards compliant<br>
+✅ <strong>FSSAI Approved</strong> — Food Safety and Standards Authority of India<br>
+✅ <strong>ISO 22000</strong> — Food Safety Management System<br>
+✅ <strong>WHO Guidelines</strong> — Water quality aligned with WHO standards<br>
+✅ <strong>Alkaline pH 8+</strong> — Lab-tested and verified<br>
+✅ <strong>Ultra-Low TDS</strong> — Third-party lab certified<br><br>
+Every batch is tested before dispatch. <strong>Purity is our promise.</strong>`,
+};
 
-FORMAT: Respond in friendly HTML with <strong> for key terms, <br> for line breaks. Keep answers concise (3-6 lines max), warm, and on-brand. Use relevant emojis sparingly. Always end partnership/contact questions with the contact details. Never mention you are Claude or an AI — you are Aryan, Akash Jal's brand specialist.`;
-
-let chatHistory = [];
-
-async function getAIReply(userMessage) {
-  chatHistory.push({ role: "user", content: userMessage });
-  const response = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 400,
-      system: ARYAN_SYSTEM,
-      messages: chatHistory
-    })
-  });
-  const data = await response.json();
-  const reply = data.content?.[0]?.text || "I'd love to help! Please email <strong>info@akashjal.com</strong> and we'll get back to you shortly. 🙏";
-  chatHistory.push({ role: "assistant", content: reply });
-  // keep history short
-  if(chatHistory.length > 12) chatHistory = chatHistory.slice(-12);
-  return reply;
+function getReply(t){
+  t = t.toLowerCase();
+  if(t==='about'||t.includes('what is akash')||t.includes('who are you')||t.includes('company')||t.includes('brand')) return KB.about;
+  if(t==='products'||t.includes('product')||t.includes('can')||t.includes('price')||t.includes('cost')||t.includes('buy')||t.includes('order')) return KB.products;
+  if(t==='technology'||t.includes('tech')||t.includes('how does')||t.includes('filter')||t.includes('purif')||t.includes('awg')||t.includes('process')) return KB.technology;
+  if(t==='philosophy'||t.includes('philosoph')||t.includes('panchabhuta')||t.includes('element')||t.includes('akasha')||t.includes('vayu')||t.includes('spiritual')) return KB.philosophy;
+  if(t==='sustainability'||t.includes('sustain')||t.includes('eco')||t.includes('environment')||t.includes('green')||t.includes('groundwater')||t.includes('plastic')) return KB.sustainability;
+  if(t==='geometry'||t.includes('geometr')||t.includes('yantra')||t.includes('sacred')||t.includes('platonic')||t.includes('design')||t.includes('logo')) return KB.geometry;
+  if(t==='partner'||t.includes('partner')||t.includes('distribut')||t.includes('invest')||t.includes('b2b')||t.includes('franchise')||t.includes('collaborat')) return KB.partner;
+  if(t==='contact'||t.includes('contact')||t.includes('address')||t.includes('email')||t.includes('location')||t.includes('office')||t.includes('where')) return KB.contact;
+  if(t==='founder'||t.includes('aryan')||t.includes('founder')||t.includes('who made')||t.includes('creator')||t.includes('team')) return KB.founder;
+  if(t==='certifications'||t.includes('certif')||t.includes('safe')||t.includes('quality')||t.includes('fssai')||t.includes('bis')||t.includes('iso')||t.includes('standard')) return KB.certifications;
+  return `Thanks for your message! 😊 I can help with:<br><br>
+💧 Products &amp; Pricing &nbsp;|&nbsp; ⚗️ Technology<br>
+🕉️ Philosophy &nbsp;|&nbsp; 🌿 Eco Mission<br>
+🌍 Planet &nbsp;|&nbsp; 🤝 Partnerships<br>
+📍 Contact &nbsp;|&nbsp; 👤 Founder &nbsp;|&nbsp; 🏅 Quality<br><br>
+Tap a button below or ask me anything about <strong>Akash Jal</strong>!`;
 }
-
 
 let chatOpen = false;
 function toggleChat(){
@@ -2205,24 +2093,26 @@ function sendChat(){
   if(!text) return;
   input.value = '';
   addMsg(text, 'user');
-  const q = document.getElementById('chatQuick');
+  // hide quick buttons  const q = document.getElementById('chatQuick');
   if(q) q.style.display = 'none';
   showTyping();
-  getAIReply(text)
-    .then(reply => { hideTyping(); addMsg(reply, 'bot'); })
-    .catch(() => { hideTyping(); addMsg('I had trouble connecting. Please email <strong>info@akashjal.com</strong> directly — we respond within 24hrs! 🙏', 'bot'); });
+  setTimeout(()=>{
+    hideTyping();
+    const reply = getReply(text);
+    addMsg(reply, 'bot');
+  }, 900 + Math.random()*600);
 }
 
 function sendQuick(topic){
   const q = document.getElementById('chatQuick');
   if(q) q.style.display = 'none';
-  const labels = {about:'About Akash Jal',products:'Tell me about your products',technology:'How does the air-to-water technology work?',philosophy:'Explain the Panchabhuta philosophy',sustainability:'What is your eco mission?',geometry:'Tell me about sacred geometry',partner:'I want to become a partner',contact:'How do I contact you?',founder:'Tell me about the founders',certifications:'What certifications do you have?'};
-  const userMsg = labels[topic] || topic;
-  addMsg(userMsg, 'user');
+  addMsg(topic.charAt(0).toUpperCase() + topic.slice(1), 'user');
   showTyping();
-  getAIReply(userMsg)
-    .then(reply => { hideTyping(); addMsg(reply, 'bot'); })
-    .catch(() => { hideTyping(); addMsg('I had trouble connecting. Please email <strong>info@akashjal.com</strong> — we respond within 24hrs! 🙏', 'bot'); });
+  setTimeout(()=>{
+    hideTyping();
+    const reply = getReply(topic);
+    addMsg(reply, 'bot');
+  }, 800 + Math.random()*500);
 }
 
 // ── Init chat badge pulse ─────────────────────────────
